@@ -43,7 +43,7 @@
 <div aria-hidden="true"
      on:click={createNewNote}
      on:keydown={(event) => sendNoteToParent(event.key)}
-     class="text-gray-400 hover:text-gray-700 transition"
+     class="{isCreatingNewNote ? 'text-gray-700' : 'text-gray-400'} hover:text-gray-700 transition"
 >
   {#if (isCreatingNewNote)}
     <!-- Even though ESLint does not like autofocus, the reason given by them doesn't seem to apply in this case -->
