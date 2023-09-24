@@ -57,12 +57,12 @@
     <iconify-icon aria-hidden="true"
                   on:click={handleEnter}
                   icon="ei:check"
-                  class="text-3xl align-middle"
+                  class="text-3xl align-middle cursor-pointer"
     />
     <iconify-icon aria-hidden="true"
                   on:click|stopPropagation={handleEscape}
                   icon="ei:close-o"
-                  class="text-3xl align-middle"
+                  class="text-3xl align-middle cursor-pointer"
     />
   {:else}
     <iconify-icon icon="ei:plus" class="text-3xl align-middle" />
