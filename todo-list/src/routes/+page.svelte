@@ -1,6 +1,7 @@
 <script>
   import TodoItem from "../models/TodoItem.js";
   import NewNote from "../components/NewNote.svelte";
+  import Note from "../components/Note.svelte";
 
   let items = [];
 
@@ -14,9 +15,6 @@
 >
   <NewNote on:new-note={(event) => addNewTodo(event.detail.text)} />
   {#each items as item (item.id)}
-    <span>
-      <input type="checkbox" bind:checked={item.isChecked} class="rounded" />
-      {item.text}
-    </span>
+    <Note {item} />
   {/each}
 </div>
