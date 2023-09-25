@@ -43,29 +43,40 @@
 <div aria-hidden="true"
      on:click={createNewNote}
      on:keydown={(event) => sendNoteToParent(event.key)}
-     class="{isCreatingNewNote ? 'text-gray-700' : 'text-gray-400'} hover:text-gray-700 transition"
+     class="
+       {isCreatingNewNote ? 'text-gray-700' : 'text-gray-400'}
+       hover:text-gray-700 hover:cursor-pointer
+       transition
+       w-full
+     "
 >
   {#if (isCreatingNewNote)}
-    <!-- Even though ESLint does not like autofocus, the reason given by them doesn't seem to apply in this case -->
-    <!-- svelte-ignore a11y-autofocus -->
-    <input id="note-text-input"
-           type="text"
-           autofocus="autofocus"
-           bind:value={noteText}
-           class="border-2 rounded py-1 px-2 transition"
-    />
-    <iconify-icon aria-hidden="true"
-                  on:click={handleEnter}
-                  icon="ei:check"
-                  class="text-3xl align-middle cursor-pointer"
-    />
-    <iconify-icon aria-hidden="true"
-                  on:click|stopPropagation={handleEscape}
-                  icon="ei:close-o"
-                  class="text-3xl align-middle cursor-pointer"
-    />
+    <div class="flex w-full gap-2 justify-between">
+      <!-- Even though ESLint does not like autofocus, the reason given by them doesn't seem to apply in this case -->
+      <!-- svelte-ignore a11y-autofocus -->
+      <input id="note-text-input"
+             type="text"
+             autofocus="autofocus"
+             bind:value={noteText}
+             class="border-2 rounded-xl py-1 px-2 transition flex-grow"
+      />
+      <div class="self-center flex justify-between">
+        <iconify-icon aria-hidden="true"
+                      on:click={handleEnter}
+                      icon="ei:check"
+                      class="text-3xl cursor-pointer"
+        />
+        <iconify-icon aria-hidden="true"
+                      on:click|stopPropagation={handleEscape}
+                      icon="ei:close-o"
+                      class="text-3xl cursor-pointer"
+        />
+      </div>
+    </div>
   {:else}
-    <iconify-icon icon="ei:plus" class="text-3xl align-middle" />
-    <span class="align-middle">Create new note...</span>
+    <div>
+      <iconify-icon icon="ei:plus" class="text-3xl align-middle" />
+      <span class="align-middle">Create new note...</span>
+    </div>
   {/if}
 </div>
