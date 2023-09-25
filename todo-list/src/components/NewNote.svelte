@@ -1,12 +1,9 @@
 <!--suppress HtmlUnknownTag -->
-
 <script>
-  import { createEventDispatcher } from "svelte";
+  import { items } from "../stores.js";
 
   let isCreatingNewNote = false;
   let noteText = "";
-
-  const dispatch = createEventDispatcher();
 
   function createNewNote() {
     if (!isCreatingNewNote) {
@@ -16,7 +13,7 @@
 
   function handleEnter() {
     if (noteText && noteText !== "") {
-      dispatch("new-note", { text: noteText });
+      items.addNewTodo(noteText);
       noteText = "";
       isCreatingNewNote = false;
     }

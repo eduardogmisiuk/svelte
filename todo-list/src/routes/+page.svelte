@@ -1,13 +1,8 @@
 <script>
-  import TodoItem from "../models/TodoItem.js";
   import NewNote from "../components/NewNote.svelte";
   import Note from "../components/Note.svelte";
 
-  let items = [new TodoItem(1, "asdfasdfasdf")];
-
-  function addNewTodo(text) {
-    items = [...items, new TodoItem(items.length + 1, text)];
-  }
+  import { items } from "../stores.js";
 </script>
 
 <div
@@ -20,8 +15,8 @@
       w-1/2 max-h-96
   "
 >
-  <NewNote on:new-note={(event) => addNewTodo(event.detail.text)} />
-  {#each items as item (item.id)}
+  <NewNote />
+  {#each $items as item (item.id)}
     <Note {item} />
   {/each}
 </div>
