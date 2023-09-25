@@ -27,21 +27,21 @@
      on:mouseenter={onMouseEnter}
      on:mouseleave={onMouseLeave}
 >
-  <div class="flex items-center gap-1">
+  <div class="flex items-center gap-2">
     <input id="note-checkbox-{item.id}" type="checkbox" bind:checked={item.isChecked}
            class="outline-none rounded-full self-center" />
-    <label for="note-checkbox-{item.id}" class="{item.isChecked ? 'line-through' : ''}">
+    <label for="note-checkbox-{item.id}" class="{item.isChecked ? 'line-through' : ''} break-all">
       {item.text}
     </label>
   </div>
   {#if isHovering}
-    <div transition:fade={{ duration: 150 }} class="self-end flex justify-center">
+    <span class="flex flex-row">
       <iconify-icon aria-hidden="true"
                     icon="ei:trash"
-                    class="text-3xl hover:cursor-pointer"
+                    class="text-3xl hover:cursor-pointer self-center"
                     on:click={() => items.removeTodo(item.id)}
       />
-      <!--      <iconify-icon icon="ei:pencil" class="text-3xl" />-->
-    </div>
+      <iconify-icon icon="ei:pencil" class="text-3xl hover:cursor-pointer" />
+    </span>
   {/if}
 </div>
