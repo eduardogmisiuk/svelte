@@ -3,7 +3,7 @@
   import NewNote from "../components/NewNote.svelte";
   import Note from "../components/Note.svelte";
 
-  let items = [];
+  let items = [new TodoItem(1, "asdfasdfasdf")];
 
   function addNewTodo(text) {
     items = [...items, new TodoItem(items.length + 1, text)];
@@ -11,7 +11,14 @@
 </script>
 
 <div
-  class="max-h-96 flex content-center flex-col bg-white overflow-y-auto border-solid border-2 border-black rounded-xl p-2 gap-1"
+  class="
+      flex content-center flex-col overflow-y-auto
+      border-solid border-2 border-gray-400 rounded-xl
+      bg-sky-100
+      p-3
+      gap-3
+      w-1/2 max-h-96
+  "
 >
   <NewNote on:new-note={(event) => addNewTodo(event.detail.text)} />
   {#each items as item (item.id)}
