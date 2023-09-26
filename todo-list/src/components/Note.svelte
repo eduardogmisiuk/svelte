@@ -1,6 +1,7 @@
 <script>
-  import { slide, fade } from "svelte/transition";
+  import { slide, blur, fade } from "svelte/transition";
   import { items } from "../stores.js";
+  import EditableInput from "./EditableInput.svelte";
 
   export let item;
 
@@ -13,6 +14,10 @@
   function onMouseLeave() {
     isHovering = false;
   }
+
+  function handleSubmit(text) {
+    item.text = text;
+  }
 </script>
 
 <div aria-hidden="true"
@@ -23,16 +28,22 @@
        hover:bg-gray-300
        p-2
      "
-     transition:slide
+     transition:slide|global
      on:mouseenter={onMouseEnter}
      on:mouseleave={onMouseLeave}
 >
   <div class="flex items-center gap-2">
-    <input id="note-checkbox-{item.id}" type="checkbox" bind:checked={item.isChecked}
+    <input type="checkbox" bind:checked={item.isChecked}
            class="outline-none rounded-full self-center" />
-    <label for="note-checkbox-{item.id}" class="{item.isChecked ? 'line-through' : ''} break-all">
-      {item.text}
-    </label>
+    <EditableInput {handleSubmit}
+                   applyBoldOnHover={false}
+                   bind:initialText={item.text}
+                   cursor="text"
+    >
+      <span class="{item.isChecked ? 'line-through' : ''} break-all">
+        {item.text}
+      </span>
+    </EditableInput>
   </div>
   {#if isHovering}
     <span class="flex flex-row">
@@ -41,7 +52,6 @@
                     class="text-3xl hover:cursor-pointer self-center"
                     on:click={() => items.removeTodo(item.id)}
       />
-      <iconify-icon icon="ei:pencil" class="text-3xl hover:cursor-pointer" />
     </span>
   {/if}
 </div>

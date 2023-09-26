@@ -1,6 +1,6 @@
 <script>
-  import NewNote from "../components/NewNote.svelte";
   import Note from "../components/Note.svelte";
+  import NewNote from "../components/NewNote.svelte";
 
   import { items } from "../stores.js";
 </script>
@@ -12,7 +12,7 @@
       bg-sky-100
       p-3
       gap-3
-      w-1/2 max-h-96
+      w-1/3 max-h-96
   "
 >
   <NewNote />

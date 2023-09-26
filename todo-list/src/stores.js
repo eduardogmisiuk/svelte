@@ -2,11 +2,13 @@ import { writable } from "svelte/store";
 import TodoItem from "./models/TodoItem.js";
 
 function createItems() {
-  const { subscribe, set, update } = writable([new TodoItem(1, "asdfasdfasdf")]);
+  const { subscribe, update } = writable([]);
+
+  let id = 0;
 
   function addNewTodo(text) {
     return update((toUpdate) => {
-      const id = toUpdate.length + 1;
+      id += 1;
       return [...toUpdate, new TodoItem(id, text)];
     });
   }
