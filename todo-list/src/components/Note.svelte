@@ -40,7 +40,7 @@
                    bind:initialText={item.text}
                    cursor="text"
     >
-      <span class="{item.isChecked ? 'line-through' : ''} break-all">
+      <span class="{item.isChecked && 'line-through'} break-all">
         {item.text}
       </span>
     </EditableInput>
@@ -49,7 +49,7 @@
     <span class="flex flex-row">
       <iconify-icon aria-hidden="true"
                     icon="ei:trash"
-                    class="text-3xl hover:cursor-pointer self-center"
+                    class="text-2xl hover:cursor-pointer self-center"
                     on:click={() => items.removeTodo(item.id)}
       />
     </span>
