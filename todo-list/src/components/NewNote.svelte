@@ -8,9 +8,11 @@
   }
 </script>
 
-<EditableInput {handleSubmit}>
-  <div>
-    <iconify-icon icon="ei:plus" class="text-3xl align-middle" />
-    <span class="align-middle">Create new note...</span>
-  </div>
-</EditableInput>
+<div class="mt-3">
+  <EditableInput {handleSubmit}>
+    <div>
+      <iconify-icon icon="ei:plus" class="text-3xl align-middle" />
+      <span class="align-middle">Create new note...</span>
+    </div>
+  </EditableInput>
+</div>

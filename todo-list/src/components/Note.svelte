@@ -33,7 +33,7 @@
        flex justify-between items-center transition
        bg-gray-100
        hover:bg-gray-300
-       p-2
+       p-2 mt-3
      "
      transition:slide|global
      on:mouseenter={onMouseEnter}
@@ -50,7 +50,7 @@
                    bind:initialText={item.text}
                    cursor="text"
     >
-      <span class="{item.isChecked && 'line-through'} break-all">
+      <span class="break-all">
         {item.text}
       </span>
     </EditableInput>

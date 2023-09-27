@@ -8,7 +8,6 @@
       border-solid border-2 border-gray-400 rounded-xl
       bg-sky-100
       p-3
-      gap-3
       w-full max-h-96
   "
 >
