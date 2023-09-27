@@ -9,7 +9,7 @@ function createItems() {
   function addNewTodo(text) {
     return update((toUpdate) => {
       id += 1;
-      return [...toUpdate, new TodoItem(id, text)];
+      return [...toUpdate, new TodoItem({ id, text })];
     });
   }
 
@@ -19,10 +19,15 @@ function createItems() {
     });
   }
 
+  function updateTodo(toUpdate) {
+    return update((items) => items.map(item => item.id === toUpdate.id ? toUpdate : item));
+  }
+
   return {
     subscribe,
     addNewTodo,
-    removeTodo
+    removeTodo,
+    updateTodo
   };
 }
 

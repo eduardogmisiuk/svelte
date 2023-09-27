@@ -1,7 +1,8 @@
 <script>
-  import { slide, blur, fade } from "svelte/transition";
+  import { slide } from "svelte/transition";
   import { items } from "../stores.js";
   import EditableInput from "./EditableInput.svelte";
+  import TodoItem from "../models/TodoItem.js";
 
   export let item;
 
@@ -18,6 +19,12 @@
   function handleSubmit(text) {
     item.text = text;
   }
+
+  function toggleCheckbox(e) {
+    const isChecked = e.currentTarget.checked;
+    const todoItem = new TodoItem({ ...item, isChecked });
+    items.updateTodo(todoItem);
+  }
 </script>
 
 <div aria-hidden="true"
@@ -33,8 +40,11 @@
      on:mouseleave={onMouseLeave}
 >
   <div class="flex items-center gap-2">
-    <input type="checkbox" bind:checked={item.isChecked}
-           class="outline-none rounded-full self-center" />
+    <input type="checkbox"
+           checked={item.isChecked}
+           class="outline-none rounded-full self-center"
+           on:change={toggleCheckbox}
+    />
     <EditableInput {handleSubmit}
                    applyBoldOnHover={false}
                    bind:initialText={item.text}
