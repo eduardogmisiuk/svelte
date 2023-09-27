@@ -2,7 +2,6 @@
   import { slide } from "svelte/transition";
   import { items } from "../stores.js";
   import EditableInput from "./EditableInput.svelte";
-  import TodoItem from "../models/TodoItem.js";
 
   export let item;
 
@@ -18,12 +17,12 @@
 
   function handleSubmit(text) {
     item.text = text;
+    items.updateTodo(item);
   }
 
   function toggleCheckbox(e) {
-    const isChecked = e.currentTarget.checked;
-    const todoItem = new TodoItem({ ...item, isChecked });
-    items.updateTodo(todoItem);
+    item.isChecked = e.currentTarget.checked;
+    items.updateTodo(item);
   }
 </script>
 
