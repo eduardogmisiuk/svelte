@@ -17,21 +17,17 @@
     }
   }
 
-  function reset() {
-    text = "";
-    isEditing = false;
-  }
-
   function handleEnter() {
     if (text && text !== "") {
       handleSubmit(text);
-      reset();
+      isEditing = false;
     }
   }
 
   function handleEscape() {
     handleCancel();
-    reset();
+    text = "";
+    isEditing = false;
     text = initialText;
   }
 
