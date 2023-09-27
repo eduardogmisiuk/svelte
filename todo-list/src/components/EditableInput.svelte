@@ -7,6 +7,7 @@
   };
   export let isEditing = false;
   export let applyBoldOnHover = true;
+  export let resetTextOnSubmit = false;
   export let cursor = "pointer";
 
   let text = initialText;
@@ -21,12 +22,15 @@
     if (text && text !== "") {
       handleSubmit(text);
       isEditing = false;
+
+      if (resetTextOnSubmit) {
+        text = initialText;
+      }
     }
   }
 
   function handleEscape() {
     handleCancel();
-    text = "";
     isEditing = false;
     text = initialText;
   }

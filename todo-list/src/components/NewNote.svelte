@@ -9,7 +9,7 @@
 </script>
 
 <div class="mt-3">
-  <EditableInput {handleSubmit}>
+  <EditableInput {handleSubmit} resetTextOnSubmit={true}>
     <div>
       <iconify-icon icon="ei:plus" class="text-3xl align-middle" />
       <span class="align-middle">Create new note...</span>
