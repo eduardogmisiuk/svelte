@@ -5,15 +5,16 @@
 <div
   class="
       flex content-center flex-col overflow-y-auto
-      border-solid border-2 border-gray-400 rounded-xl
+      rounded-xl
       bg-sky-100
-      p-3
       w-full max-h-96
+      p-3
   "
 >
-  <span>
-    <h3 class="text-center text-2xl font-bold">{title}</h3>
-    <hr />
-  </span>
+  <div class="border-b-2 border-b-white">
+    <h3 class="text-center text-2xl font-bold mb-2">
+      {title}
+    </h3>
+  </div>
   <slot />
 </div>

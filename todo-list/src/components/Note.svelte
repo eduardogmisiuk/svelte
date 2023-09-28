@@ -28,10 +28,10 @@
 
 <div aria-hidden="true"
      class="
-       border-2 border-gray-400 rounded-2xl
+       rounded-2xl
        flex transition
-       bg-gray-100
-       hover:bg-gray-300
+       bg-white
+       hover:bg-gray-100
        p-2 mt-3
      "
      transition:slide|global
