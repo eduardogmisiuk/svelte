@@ -3,7 +3,10 @@
   import DoneList from "../components/lists/DoneList.svelte";
 </script>
 
-<div class="flex justify-evenly gap-5">
+<div class="flex justify-evenly
+            md:flex-row md:gap-5
+            sm:flex-col sm:gap-8
+           ">
 
   <div class="w-full">
     <TodoList />
