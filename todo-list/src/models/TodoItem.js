@@ -3,5 +3,8 @@ export default class TodoItem {
     this.id = id;
     this.text = text;
     this.isChecked = isChecked;
+    this.createdAt = Date.now();
+    let currentDate = new Date(this.createdAt);
+    this.createdAtFormatted = `${currentDate.toLocaleDateString()} - ${currentDate.toLocaleTimeString()}`;
   }
 }

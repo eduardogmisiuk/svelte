@@ -29,7 +29,7 @@
 <div aria-hidden="true"
      class="
        border-2 border-gray-400 rounded-2xl
-       flex justify-between items-center transition
+       flex transition
        bg-gray-100
        hover:bg-gray-300
        p-2 mt-3
@@ -38,21 +38,22 @@
      on:mouseenter={onMouseEnter}
      on:mouseleave={onMouseLeave}
 >
-  <div class="flex items-center gap-2">
-    <input type="checkbox"
-           checked={item.isChecked}
-           class="outline-none rounded-full self-center"
-           on:change={toggleCheckbox}
-    />
+  <input type="checkbox"
+         checked={item.isChecked}
+         class="outline-none rounded-full self-center mr-2"
+         on:change={toggleCheckbox}
+  />
+  <div class="flex flex-col w-full">
     <EditableInput {handleSubmit}
                    applyBoldOnHover={false}
                    bind:initialText={item.text}
                    cursor="text"
     >
-      <span class="break-all">
-        {item.text}
-      </span>
+        <span class="break-all">
+          {item.text}
+        </span>
     </EditableInput>
+    <small class="text-gray-400">{item.createdAtFormatted}</small>
   </div>
   {#if isHovering}
     <span class="flex flex-row">
