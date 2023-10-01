@@ -7,7 +7,9 @@
       flex content-center flex-col overflow-y-auto
       rounded-xl
       bg-sky-100
-      w-full max-h-96
+      w-full
+      md:max-h-[90vh]
+      sm:max-h-[40vh]
       p-3
   "
 >
