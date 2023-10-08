@@ -4,4 +4,22 @@
 
 body {
     font-family: "Poppins", serif;
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-corner {
+        background: black;
+    }
 }
