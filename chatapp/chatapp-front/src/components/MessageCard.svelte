@@ -1,6 +1,8 @@
 <script>
 	export let message;
 	export let user;
+
+	const messageSelfAlign = user === message.sender ? 'self-end' : 'self-start';
 </script>
 
 <div class='
@@ -8,7 +10,7 @@
 		flex flex-col justify-start
 		bg-blue-100
 		rounded-2xl p-3
-		{user === message.sender ? "self-end" : "self-start"}
+		{messageSelfAlign}
 	'
 >
 	<strong>
