@@ -1,20 +1,19 @@
 <script>
-	import { messages } from '../stores.js';
-	import MessageCard from './MessageCard.svelte';
+	import MessageList from './MessageList.svelte';
+	import MessageInput from './MessageInput.svelte';
 
 	export let user;
 </script>
 
+<!-- The max height value should subtract margin and padding to effectively occupy all the screen -->
 <div class='
-		flex flex-col
-		rounded-xl
-		m-4 p-5 gap-2
-		bg-white
-		max-h-[97vh]
-		overflow-y-auto
-	'
->
-	{#each $messages as message (message.id)}
-		<MessageCard {message} {user} />
-	{/each}
+			 flex flex-col
+			 rounded-xl
+			 m-4 p-5 pr-0 pb-0
+			 bg-white
+			 max-h-[calc(100vh-theme(spacing.4)-theme(spacing.5))]
+			 overflow-y-auto
+		 '>
+	<MessageList {user} />
+	<MessageInput {user} />
 </div>
