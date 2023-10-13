@@ -42,4 +42,31 @@ function createMessagesStore() {
 	};
 }
 
+function createMessageContainerStore() {
+	let initMessageContainer = null;
+	const { subscribe, update } = writable(initMessageContainer);
+
+	function addMessageContainer(newMessageContainer) {
+		return update(() => newMessageContainer);
+	}
+
+	function scrollToBottom() {
+		return update((messageContainer) => {
+			if (messageContainer) {
+				console.log(`scrollTop: ${messageContainer.scrollTop}`);
+				console.log(`scrollHeight: ${messageContainer.scrollHeight}`);
+				messageContainer.scrollTop = messageContainer.scrollHeight;
+			}
+			return messageContainer;
+		});
+	}
+
+	return {
+		subscribe,
+		addMessageContainer,
+		scrollToBottom
+	};
+}
+
 export const messages = createMessagesStore();
+export const messageContainer = createMessageContainerStore();

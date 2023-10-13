@@ -1,23 +1,25 @@
 <script>
 	import MessageCard from './MessageCard.svelte';
-	// import { onMount } from 'svelte';
-	import { messages } from '../stores.js';
+	import { messageContainer, messages } from '../stores.js';
+	import { onMount } from 'svelte';
 
 	export let user;
 
-	let messageContainer = null;
+	let container = null;
 
-	// onMount(() => {
-	// 	storeState.addMessageContainer(messageContainer);
-	// });
+	onMount(() => {
+		messageContainer.addMessageContainer(container);
+		messageContainer.scrollToBottom();
+	});
 </script>
 
 <div class='
 			 flex flex-col
 			 rounded-xl
-			 gap-2 pr-3 mb-3
+			 gap-2 p-3
+			 overflow-y-auto
 		 '
-		 bind:this={messageContainer}
+		 bind:this={container}
 >
 	{#each $messages as message (message.id)}
 		<MessageCard {message} {user} />

@@ -1,6 +1,6 @@
 <script>
-	import { messages } from '../stores.js';
-	// import { onMount } from 'svelte';
+	import { messageContainer, messages } from '../stores.js';
+	import { onMount } from 'svelte';
 
 	export let user;
 
@@ -13,16 +13,15 @@
 	function handleKeyDown(pressedKey) {
 		if (pressedKey === 'Enter' && isTextNotEmpty()) {
 			messages.sendMessage(user, text);
-			// messages.scrollToBottom();
+			messageContainer.scrollToBottom();
 			text = '';
 		}
 	}
 
-	// onMount(messages.scrollToBottom);
+	onMount(messageContainer.scrollToBottom);
 </script>
 
-<div class='sticky bottom-0 left-0 right-0 bg-white pb-2'>
-	<hr class='mb-3'>
+<div class='m-3'>
 	<input type='text'
 				 placeholder='Enter message...'
 				 class='

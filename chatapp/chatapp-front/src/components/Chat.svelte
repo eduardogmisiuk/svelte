@@ -9,11 +9,12 @@
 <div class='
 			 flex flex-col
 			 rounded-xl
-			 m-4 p-5 pr-0 pb-0
+			 m-4 pr-0 pb-0
 			 bg-white
 			 max-h-[calc(100vh-theme(spacing.4)-theme(spacing.5))]
-			 overflow-y-auto
-		 '>
+		 '
+>
 	<MessageList {user} />
+	<hr />
 	<MessageInput {user} />
 </div>
