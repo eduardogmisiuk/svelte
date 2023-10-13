@@ -53,11 +53,9 @@ function createMessageContainerStore() {
 	function scrollToBottom() {
 		return update((messageContainer) => {
 			if (messageContainer) {
-				console.log(`scrollTop: ${messageContainer.scrollTop}`);
-				console.log(`scrollHeight: ${messageContainer.scrollHeight}`);
 				messageContainer.scrollTop = messageContainer.scrollHeight;
+				return messageContainer;
 			}
-			return messageContainer;
 		});
 	}
 

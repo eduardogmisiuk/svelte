@@ -1,16 +1,10 @@
 <script>
 	import { slide } from 'svelte/transition';
-	import { afterUpdate } from 'svelte';
-	import { messageContainer } from '../stores.js';
 
 	export let message;
 	export let user;
 
 	const messageSelfAlign = user === message.sender ? 'self-end' : 'self-start';
-
-	afterUpdate(() => {
-		messageContainer.scrollToBottom();
-	});
 </script>
 
 <div transition:slide

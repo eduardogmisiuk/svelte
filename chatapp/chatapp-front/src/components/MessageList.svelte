@@ -11,6 +11,7 @@
 		messageContainer.addMessageContainer(container);
 		messageContainer.scrollToBottom();
 	});
+
 </script>
 
 <div class='

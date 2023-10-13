@@ -1,10 +1,10 @@
 <script>
 	import { messageContainer, messages } from '../stores.js';
-	import { onMount } from 'svelte';
 
 	export let user;
 
 	let text;
+	let scrollTimeout = null;
 
 	function isTextNotEmpty() {
 		return text && text !== '';
@@ -13,12 +13,16 @@
 	function handleKeyDown(pressedKey) {
 		if (pressedKey === 'Enter' && isTextNotEmpty()) {
 			messages.sendMessage(user, text);
-			messageContainer.scrollToBottom();
 			text = '';
+			if (scrollTimeout) {
+				clearTimeout(scrollTimeout);
+			}
+			scrollTimeout = setTimeout(() => {
+				messageContainer.scrollToBottom();
+				scrollTimeout = null;
+			}, 500);
 		}
 	}
-
-	onMount(messageContainer.scrollToBottom);
 </script>
 
 <div class='m-3'>
