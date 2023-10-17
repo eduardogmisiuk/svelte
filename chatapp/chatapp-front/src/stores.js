@@ -1,7 +1,14 @@
 import { writable } from 'svelte/store';
 import Message from './models/Message.js';
+import WebSocketClient from '$lib/WebSocketClient.js';
 
 function createMessagesStore() {
+	const users = [
+		'user123',
+		'jane_doe',
+		'mike_j',
+		'e_davis'
+	];
 	let messages = [
 		new Message({ id: 1, sender: 'user123', text: 'Hi everyone, how\'s it going?' }),
 		new Message({ id: 2, sender: 'jane_doe', text: 'Hey! I\'m doing great, thanks for asking.' }),
@@ -26,9 +33,12 @@ function createMessagesStore() {
 	];
 	let id = messages.length + 1;
 
+	let wsClient = new WebSocketClient(receiveMessageAsAnyUser);
+	wsClient.connect();
+
 	const { subscribe, update } = writable(messages);
 
-	function sendMessage(sender, text) {
+	function receiveMessage(sender, text) {
 		return update((toUpdate) => {
 			const updatedItem = new Message({ id, sender, text });
 			id += 1;
@@ -36,8 +46,24 @@ function createMessagesStore() {
 		});
 	}
 
+	function receiveMessageAsAnyUser(text) {
+		const i = Math.floor(Math.random() * 4);
+		const sender = users[i];
+		return update((toUpdate) => {
+			const updatedItem = new Message({ id, sender, text });
+			id += 1;
+			return [...toUpdate, updatedItem];
+		});
+	}
+
+	function sendMessage(message) {
+		wsClient.sendMessage(message);
+	}
+
 	return {
 		subscribe,
+		receiveMessage,
+		receiveMessageAsAnyUser,
 		sendMessage
 	};
 }
