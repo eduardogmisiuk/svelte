@@ -1,7 +1,17 @@
 <script>
 	import Chat from '../components/Chat.svelte';
+  import user from '../stores/userStore.js';
+  import UserInput from "../components/UserInput.svelte";
 
-	export let data;
+  let hasUser = false;
+
+  $: {
+    hasUser = $user !== null && $user !== '';
+  }
 </script>
 
-<Chat user={data.user} />
+{#if hasUser}
+  <Chat />
+{:else}
+  <UserInput />
+{/if}

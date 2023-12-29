@@ -4,8 +4,6 @@
 	import { onMount } from 'svelte';
 	import {messageContainerStore} from "../stores/messageContainerStore.js";
 
-	export let user;
-
 	let container = null;
 
 	onMount(() => {
@@ -24,6 +22,6 @@
 		 bind:this={container}
 >
 	{#each $messages as message (message.id)}
-		<MessageCard {message} {user} />
+		<MessageCard {message} />
 	{/each}
 </div>

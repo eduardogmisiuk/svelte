@@ -1,10 +1,10 @@
 <script>
 	import { slide } from 'svelte/transition';
+	import user from '../stores/userStore.js';
 
 	export let message;
-	export let user;
 
-	const messageSelfAlign = user === message.sender ? 'self-end' : 'self-start';
+	const messageSelfAlign = $user === message.sender ? 'self-end' : 'self-start';
 </script>
 
 <div transition:slide

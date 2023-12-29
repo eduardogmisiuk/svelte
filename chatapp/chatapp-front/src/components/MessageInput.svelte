@@ -1,6 +1,7 @@
 <script>
 	import { messages } from '../stores/messageStore.js';
 	import {messageContainerStore} from "../stores/messageContainerStore.js";
+	import user from '../stores/userStore.js';
 
 	let text;
 	let scrollTimeout = null;
@@ -11,8 +12,7 @@
 
 	function handleKeyDown(pressedKey) {
 		if (pressedKey === 'Enter' && isTextNotEmpty()) {
-			messages.sendMessage(text);
-			// messages.sendMessage(user, text);
+			messages.sendMessage($user, text);
 			text = '';
 			if (scrollTimeout) {
 				clearTimeout(scrollTimeout);

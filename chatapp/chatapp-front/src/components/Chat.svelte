@@ -2,7 +2,6 @@
 	import MessageList from './MessageList.svelte';
 	import MessageInput from './MessageInput.svelte';
 
-	export let user;
 </script>
 
 <!-- The max height value should subtract margin and padding to effectively occupy all the screen -->
@@ -14,7 +13,7 @@
 			 max-h-[calc(100vh-theme(spacing.4)-theme(spacing.5))]
 		 '
 >
-	<MessageList {user} />
+	<MessageList />
 	<hr />
-	<MessageInput {user} />
+	<MessageInput />
 </div>

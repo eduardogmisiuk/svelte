@@ -18,7 +18,7 @@ export default class WebSocketClient {
 		this.socket.onmessage = ((e) => {
 			console.log('Received message');
 			console.log(e);
-			this.onMessageReceived(e.data);
+			this.onMessageReceived(JSON.parse(e.data));
 		});
 	}
 
