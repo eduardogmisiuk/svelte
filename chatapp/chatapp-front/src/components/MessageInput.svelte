@@ -1,5 +1,6 @@
 <script>
-	import { messageContainer, messages } from '../stores.js';
+	import { messages } from '../stores/messageStore.js';
+	import {messageContainerStore} from "../stores/messageContainerStore.js";
 
 	let text;
 	let scrollTimeout = null;
@@ -17,7 +18,7 @@
 				clearTimeout(scrollTimeout);
 			}
 			scrollTimeout = setTimeout(() => {
-				messageContainer.scrollToBottom();
+				messageContainerStore.scrollToBottom();
 				scrollTimeout = null;
 			}, 500);
 		}

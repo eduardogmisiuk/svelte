@@ -1,15 +1,16 @@
 <script>
 	import MessageCard from './MessageCard.svelte';
-	import { messageContainer, messages } from '../stores.js';
+	import { messages } from '../stores/messageStore.js';
 	import { onMount } from 'svelte';
+	import {messageContainerStore} from "../stores/messageContainerStore.js";
 
 	export let user;
 
 	let container = null;
 
 	onMount(() => {
-		messageContainer.addMessageContainer(container);
-		messageContainer.scrollToBottom();
+		messageContainerStore.addMessageContainer(container);
+		messageContainerStore.scrollToBottom();
 	});
 
 </script>

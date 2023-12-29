@@ -1,5 +1,5 @@
-import { writable } from 'svelte/store';
-import Message from './models/Message.js';
+import {writable} from 'svelte/store';
+import Message from '../models/Message.js';
 import WebSocketClient from '$lib/WebSocketClient.js';
 
 function createMessagesStore() {
@@ -47,7 +47,7 @@ function createMessagesStore() {
 	}
 
 	function receiveMessageAsAnyUser(text) {
-		const i = Math.floor(Math.random() * 4);
+		const i = Math.floor(Math.random() * users.length);
 		const sender = users[i];
 		return update((toUpdate) => {
 			const updatedItem = new Message({ id, sender, text });
@@ -68,29 +68,4 @@ function createMessagesStore() {
 	};
 }
 
-function createMessageContainerStore() {
-	let initMessageContainer = null;
-	const { subscribe, update } = writable(initMessageContainer);
-
-	function addMessageContainer(newMessageContainer) {
-		return update(() => newMessageContainer);
-	}
-
-	function scrollToBottom() {
-		return update((messageContainer) => {
-			if (messageContainer) {
-				messageContainer.scrollTop = messageContainer.scrollHeight;
-				return messageContainer;
-			}
-		});
-	}
-
-	return {
-		subscribe,
-		addMessageContainer,
-		scrollToBottom
-	};
-}
-
 export const messages = createMessagesStore();
-export const messageContainer = createMessageContainerStore();
